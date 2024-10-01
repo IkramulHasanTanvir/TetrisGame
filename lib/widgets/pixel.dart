@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class Pixel extends StatelessWidget {
   const Pixel({super.key, required this.color, this.child});
 
-  final Color color;
-  final int? child;
+  final dynamic color;
+  final String? child;
 
   @override
   Widget build(BuildContext context) {
