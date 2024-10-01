@@ -22,7 +22,7 @@ class GameBoardScreen extends StatefulWidget {
 }
 
 class _GameBoardScreenState extends State<GameBoardScreen> {
-  Piece currentPiece = Piece(type: Tetromino.T);
+  Piece currentPiece = Piece(type: Tetromino.L);
 
   @override
   void initState() {
@@ -32,7 +32,7 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
 
   void startGame() {
     currentPiece.initializePiece();
-    Duration frameRate = const Duration(milliseconds: 800);
+    Duration frameRate = const Duration(milliseconds: 600);
     gameLoop(frameRate);
   }
 
@@ -90,7 +90,7 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
   bool checkCollision(Direction direction) {
     for (int i = 0; i < currentPiece.position.length; i++) {
       int row = (currentPiece.position[i] / rowLength).floor();
-      int column = (currentPiece.position[i] % rowLength);
+      int column = currentPiece.position[i] % rowLength;
 
       if (direction == Direction.left) {
         column -= 1;
@@ -110,7 +110,7 @@ class _GameBoardScreenState extends State<GameBoardScreen> {
     if (checkCollision(Direction.down)) {
       for (int i = 0; i < currentPiece.position.length; i++) {
         int row = (currentPiece.position[i] / rowLength).floor();
-        int column = (currentPiece.position[i] % rowLength);
+        int column = currentPiece.position[i] % rowLength;
 
         if (row >= 0 && column >= 0) {
           gameBoard[row][column] = currentPiece.type;

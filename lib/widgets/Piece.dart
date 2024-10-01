@@ -48,6 +48,8 @@ class Piece {
         for (int i = 0; i < position.length; i++) {
           position[i] += rowLength;
         }
+        break;
+        default:
     }
   }
 }
